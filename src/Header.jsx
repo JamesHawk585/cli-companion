@@ -1,18 +1,48 @@
-import React from "react";
+import React, { dialogRef } from "react";
 
 const Header = () => {
+
+
   return (
-    <main>
       <header>
         <h1>💻CLI-Companion</h1>
         <div>
           <label>
             🔎 <input type="search"></input>
-            <button>+Add</button>
+            <button onClick={() => showModal()}>+Add</button>
           </label>
         </div>
+        <dialog >
+        <form>
+          <label>
+            Title
+            <input name="title" />
+          </label>
+          <label>
+            Tags
+          <input className="tags"></input>
+          </label>
+          <label>
+            Language
+            <select>
+              <option>JavaScript</option>
+              <option>Python</option>
+              <option>HTML</option>
+              <option>CSS</option>
+            </select>
+          </label>
+          <label>
+            Code
+            <textarea name="code"></textarea>
+          </label>
+          <label>
+            Explanation
+            <textarea name="explanation"></textarea>
+          </label>
+          <button>Save</button>
+        </form>
+      </dialog>
       </header>
-    </main>
   );
 };
 
