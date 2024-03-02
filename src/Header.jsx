@@ -2,6 +2,9 @@ import React, { dialogRef } from "react";
 
 const Header = () => {
 
+    const onAddButtonClick = () => {
+        console.log("I work!")
+    }
 
   return (
       <header>
@@ -9,7 +12,7 @@ const Header = () => {
         <div>
           <label>
             🔎 <input type="search"></input>
-            <button onClick={() => showModal()}>+Add</button>
+            <button onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
         <dialog >
