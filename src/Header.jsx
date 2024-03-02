@@ -8,6 +8,7 @@ const Header = () => {
         <div>
           <label>
             🔎 <input type="search"></input>
+            <button>+Add</button>
           </label>
         </div>
       </header>
