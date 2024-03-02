@@ -1,9 +1,12 @@
-import React, { dialogRef } from "react";
+import React, { useRef } from "react";
 
 const Header = () => {
 
+  const dialogRef = useRef(null)
+
     const onAddButtonClick = () => {
         console.log("I work!")
+        dialogRef.current.showModal();
     }
 
   return (
@@ -15,7 +18,7 @@ const Header = () => {
             <button onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
-        <dialog >
+        <dialog ref={dialogRef}>
         <form>
           <label>
             Title
