@@ -2,27 +2,59 @@
   "snippets": [
     {
       "id": 1,
-      "title": "Test",
-      "tags": "Test",
-      "language-select": "JavaScript",
-      "code": "Test",
-      "explanation": "Test"
+      "title": "Test1",
+      "tags": "Test Tag1",
+      "languageSelect": "JavaScript",
+      "code": "Test Code1",
+      "explanation": "Test Explanation1"
     },
     {
       "title": "Test2",
-      "tags": "Test2",
-      "language-select": "JavaScript",
-      "code": "Test2",
+      "tags": "Test Tag2",
+      "languageSelect": "CSS",
+      "code": "Test Code2",
       "explanation": "Test2",
       "id": 2
     },
     {
-      "title": "Title",
-      "tags": "Tag",
-      "language-select": "JavaScript",
+      "title": "Test3",
+      "tags": "Test Tag3",
+      "languageSelect": "Python",
       "code": "Code",
-      "explanation": "Explanation",
+      "explanation": "Test Explanation3",
       "id": 3
+    },
+    {
+      "title": "My new test snippet",
+      "tags": "my new test tag ",
+      "languageSelect": "HTML",
+      "code": "<h1></h1>",
+      "explanation": "Creates h1 html element",
+      "id": 4
+    },
+    {
+      "title": "Dog",
+      "tags": "Dog",
+      "languageSelect": "JavaScript",
+      "code": "Dog",
+      "explanation": "Dog",
+      "id": 5
+    },
+    {
+      "title": "Dog",
+      "tags": "Dog",
+      "languageSelect": "JavaScript",
+      "code": "Dog",
+      "explanation": "Dog",
+      "id": 6
+    },
+    {
+      "title": "Cat",
+      "tags": "Cat",
+      "languageSelect": "JavaScript",
+      "code": "Cat",
+      "explanation": "Cat",
+      "id": 7
     }
   ]
 }

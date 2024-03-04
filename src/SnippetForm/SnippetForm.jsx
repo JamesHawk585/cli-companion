@@ -2,22 +2,25 @@ import React, { dialogRef, useEffect } from "react";
 import "./SnippetForm.css";
 import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
 
-const API = 'http://127.0.0.1:5555/snippets'
+const API = "http://127.0.0.1:5555/snippets";
 
-const SnippetForm = ({ dialogRef }) => {
+const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
     const formData = Object.fromEntries(new FormData(e.target));
     console.log(formData);
-    fetch(API, {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formData)
-    });
+    fetch(
+      API,
+      {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(r => r.json())
+        .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject));
   };
 
   return (
@@ -33,7 +36,7 @@ const SnippetForm = ({ dialogRef }) => {
         </label>
         <label>
           Language
-          <select name="language-select">
+          <select name="languageSelect">
             <option>JavaScript</option>
             <option>Python</option>
             <option>HTML</option>

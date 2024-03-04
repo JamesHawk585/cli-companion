@@ -11,6 +11,12 @@ const Header = () => {
         dialogRef.current.showModal();
     }
 
+    const onSnippetFormSubmitted = (newSnippetObject) => {
+        console.log("onFormSbumitted")
+        console.log(newSnippetObject)
+        dialogRef.current.close()
+    }
+
   return (
       <header className="header">
         <h1>💻CLI-Companion</h1>
@@ -20,7 +26,7 @@ const Header = () => {
             <button onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>
-        <SnippetForm dialogRef={dialogRef}/>
+        <SnippetForm dialogRef={dialogRef} onSnippetFormSubmitted={onSnippetFormSubmitted}/>
       </header>
   );
 };
