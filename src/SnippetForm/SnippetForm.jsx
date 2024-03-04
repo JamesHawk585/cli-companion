@@ -1,11 +1,12 @@
 import React, { dialogRef } from 'react'
-import './SnippetForm.css'
+import "./SnippetForm.css"
+import "/home/jph94880/development/code/projects/cli-companion/src/App.css"
 
 const SnippetForm = () => {
   return (
-    <dialog ref={dialogRef}>
-        <form className='modal-form'>
-          <label>
+    // <dialog ref={dialogRef}>
+        <form className="form">
+          <label className='title-label'>
             Title
             <input name="title" />
           </label>
@@ -32,7 +33,7 @@ const SnippetForm = () => {
           </label>
           <button>Save</button>
         </form>
-      </dialog>
+      // </dialog>
   )
 }
 
