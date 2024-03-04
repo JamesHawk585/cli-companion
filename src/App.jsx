@@ -7,7 +7,7 @@ export default () => {
 
   return (
     <>
-    <main>
+    <main className="app">
       <Header />
       </main>
     </>
