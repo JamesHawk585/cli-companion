@@ -12,7 +12,7 @@ const Header = () => {
   return (
       <header>
         <h1>💻CLI-Companion</h1>
-        <div>
+        <div>2
           <label>
             🔎 <input type="search"></input>
             <button onClick={() => onAddButtonClick()}>+Add</button>

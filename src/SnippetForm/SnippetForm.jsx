@@ -1,9 +1,10 @@
 import React, { dialogRef } from 'react'
+import './SnippetForm.css'
 
 const SnippetForm = () => {
   return (
     <dialog ref={dialogRef}>
-        <form>
+        <form className='modal-form'>
           <label>
             Title
             <input name="title" />
