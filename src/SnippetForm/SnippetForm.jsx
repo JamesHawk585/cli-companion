@@ -3,9 +3,19 @@ import "./SnippetForm.css";
 import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
 
 const SnippetForm = ({ dialogRef }) => {
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("handleSubmit works!")
+
+
+        // Create a blog post on fromEntries(new FormData)
+        // const formData = fromEntries(new FormData)
+    }
+
   return (
     <dialog ref={dialogRef}>
-      <form className="form">
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <label className="title-label">
           Title
           <input name="title" />
