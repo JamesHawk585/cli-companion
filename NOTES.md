@@ -18,6 +18,23 @@
 4. [] This main page will have a search bar. 
     a. Serch bar can search by: name, tag, desciprion, or code block.  
 
+
+    ## Delete Snippet:
+    1. attached onClick event to delete button. onCick calls an anonymous function that in turn calls handleDeleteSnippet in App.jsx. 
+    2. Create handleDeleteSnippet in App.jsx
+    3. handleDeleteSnippet should:
+        - [] Delete the snippet from the db. 
+        - [] Remove the snippet from the 'snippets' stateful array. 
+        
+        onCick calls an anonymous function that in turn calls handleEditSnippet in App.jsx.
+
+    ## Edit Snippet
+    1. Attach event listener to the edit button. 
+    2. onCick calls an anonymous function that in turn calls handleEditSnippet in App.jsx. 
+    3. handleEditSubmit should: 
+        - send a PATCH request update the specified backend resource. 
+        - Update the stateful array such that only the pathced object is changed. 
+
 # Server 
 
 

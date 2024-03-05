@@ -18,10 +18,10 @@ const Header = ({ onSnippetAdded }) => {
 
   return (
       <header className="header">
-        <h1>💻CLI-Companion</h1>
+        <h1 id="cli-companion-logo">💻CLI-Companion</h1>
         <div>
           <label>
-            🔎 <input type="search"></input>
+            🔎 <input type="search" id="search-bar"></input>
             <button onClick={() => onAddButtonClick()}>+Add</button>
           </label>
         </div>

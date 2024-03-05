@@ -87,6 +87,22 @@
       "code": "Test7",
       "explanation": "Test7",
       "id": 11
+    },
+    {
+      "title": "Launch json server",
+      "tags": "json-server",
+      "languageSelect": "JavaScript",
+      "code": "",
+      "explanation": "",
+      "id": 12
+    },
+    {
+      "title": "Launch json server",
+      "tags": "json-server",
+      "languageSelect": "Terminal Commands",
+      "code": "json-server --watch db.sjon -p 5555",
+      "explanation": "Launches json-server on a specified post, 5555 in this case. ",
+      "id": 13
     }
   ]
 }
