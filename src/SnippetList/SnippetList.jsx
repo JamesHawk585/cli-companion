@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SnippetCard from "../SnippetCard/SnippetCard";
+import "./SnippetList.css"
 
 const SnippetList = ({ API, snippets }) => {
   const snippetCards = snippets.map((snippetObj, index) => {
     return (
-      <div className="snippetCardContainer">
+      // <div className="snippetCardContainer">
         <SnippetCard
           key={index}
           title={snippetObj.title}
@@ -12,7 +13,7 @@ const SnippetList = ({ API, snippets }) => {
           languageSelect={snippetObj.languageSelect}
           code={snippetObj.code}
         />
-      </div>
+      // </div>
     );
   });
 

@@ -23,7 +23,9 @@ export default () => {
     <>
     <div className="app">
       <Header onSnippetAdded={onSnippetAdded}/>
+      <section className="snippetCardContainer">
       <SnippetList API={API} snippets={snippets}/>
+      </section>
       </div>
     </>
   );
