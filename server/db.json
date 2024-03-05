@@ -103,6 +103,30 @@
       "code": "json-server --watch db.sjon -p 5555",
       "explanation": "Launches json-server on a specified post, 5555 in this case. ",
       "id": 13
+    },
+    {
+      "title": "Test Reset",
+      "tags": "Test Reset",
+      "languageSelect": "JavaScript",
+      "code": "Test Reset",
+      "explanation": "Test Reset",
+      "id": 14
+    },
+    {
+      "title": "a",
+      "tags": "a",
+      "languageSelect": "JavaScript",
+      "code": "a",
+      "explanation": "a",
+      "id": 15
+    },
+    {
+      "title": "",
+      "tags": "",
+      "languageSelect": "JavaScript",
+      "code": "",
+      "explanation": "",
+      "id": 16
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { dialogRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import "./SnippetForm.css";
 import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
 
@@ -20,14 +20,15 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
         body: JSON.stringify(formData)
       })
         .then(r => r.json())
-        .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject));
-  };
+        .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject))
+        formRef.current.reset()
+};
 
 //   The response body of a post request is the newly added object as it appears in the db, with id. 
 
   return (
     <dialog ref={dialogRef}>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
+      <form className="form" onSubmit={(e) => onSubmit(e)} /*ref={formRef}*/>
         <label className="title-label">
           Title
           <input name="title" />

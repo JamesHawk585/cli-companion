@@ -19,6 +19,10 @@
     a. Serch bar can search by: name, tag, desciprion, or code block.  
 
 
+    ## Add Snippet:
+    1. Clear the modal form on submission. 
+
+
     ## Delete Snippet:
     1. attached onClick event to delete button. onCick calls an anonymous function that in turn calls handleDeleteSnippet in App.jsx. 
     2. Create handleDeleteSnippet in App.jsx
@@ -29,11 +33,12 @@
         onCick calls an anonymous function that in turn calls handleEditSnippet in App.jsx.
 
     ## Edit Snippet
-    1. Attach event listener to the edit button. 
-    2. onCick calls an anonymous function that in turn calls handleEditSnippet in App.jsx. 
-    3. handleEditSubmit should: 
+    1. Add an onClick event to the edit button of the SnippetCard to trigger a modal form similar to that in SnippetFrom.jsx 
+    1. Attach event listener to the "Submit Changes" button on the modal. 
+    2. onSubmit calls an anonymous function that in turn calls handleEditSnippet in App.jsx or SnippetList.jsx?. 
+    3. handleEditSubmit should:   
         - send a PATCH request update the specified backend resource. 
-        - Update the stateful array such that only the pathced object is changed. 
+        - Update the stateful array such that only the patched object is changed. 
 
 # Server 
 
