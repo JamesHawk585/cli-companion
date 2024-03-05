@@ -1,13 +1,46 @@
-1. SPA
-2. Main page will display our list of code snippets as cards. 
-    a. Each snippet will have:
-        - title
-        - tags
-        - a block of code
-        - description 
-    b. Each card will have edit and delete buttons 
-3. Main page will have a button to create a new snippet/ 
-    a. When clicked, amodalpopup will appear. 
-    b. It will have a form to create a new snippet. 
-    c. This same mdal popup can be used hwen we edit a snippet, too. 
-4. This main page will have a search bar. 
+
+# Client 
+
+1. [x] SPA
+2. [x] Main page will display our list of code snippets as cards. 
+    a. [x] Each snippet will have:
+        - [x] title
+        - [x] tags
+        - [x] a block of code
+        - [x] description 
+    b. [] Each card will have edit and delete buttons.
+    c. [] Each card will have appropriate css.  
+3. [x] Main page will have a button to create a new snippet. 
+    a. [x] When clicked, a modal popup will appear. 
+    b. [x] It will have a form to create a new snippet. 
+    c. [] Use the same modal popup when we edit a snippet, too.
+    d. [] 
+4. [] This main page will have a search bar. 
+    a. Serch bar can search by: name, tag, desciprion, or code block.  
+
+
+    ## Add Snippet:
+    1. Clear the modal form on submission. 
+
+
+    ## Delete Snippet:
+    1. attached onClick event to delete button. onCick calls an anonymous function that in turn calls handleDeleteSnippet in App.jsx. 
+    2. Create handleDeleteSnippet in App.jsx
+    3. handleDeleteSnippet should:
+        - [] Delete the snippet from the db. 
+        - [] Remove the snippet from the 'snippets' stateful array. 
+        
+        onCick calls an anonymous function that in turn calls handleEditSnippet in App.jsx.
+
+    ## Edit Snippet
+    1. Add an onClick event to the edit button of the SnippetCard to trigger a modal form similar to that in SnippetFrom.jsx 
+    1. Attach event listener to the "Submit Changes" button on the modal. 
+    2. onSubmit calls an anonymous function that in turn calls handleEditSnippet in App.jsx or SnippetList.jsx?. 
+    3. handleEditSubmit should:   
+        - send a PATCH request update the specified backend resource. 
+        - Update the stateful array such that only the patched object is changed. 
+
+# Server 
+
+
+# Deployment 

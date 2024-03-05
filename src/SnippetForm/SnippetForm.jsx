@@ -1,36 +1,50 @@
-import React, { dialogRef } from "react";
+import React, { useRef, useEffect } from "react";
 import "./SnippetForm.css";
 import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
 
-const SnippetForm = ({ dialogRef }) => {
+const API = "http://127.0.0.1:5555/snippets";
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("handleSubmit works!")
+const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target));
+    console.log(formData);
+    fetch(
+      API,
+      {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(r => r.json())
+        .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject))
+        formRef.current.reset()
+};
 
-
-        // Create a blog post on fromEntries(new FormData)
-        // const formData = fromEntries(new FormData)
-    }
+//   The response body of a post request is the newly added object as it appears in the db, with id. 
 
   return (
     <dialog ref={dialogRef}>
-      <form className="form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="form">
         <label className="title-label">
           Title
           <input name="title" />
         </label>
-        <label>
+        <label className="tag-label">
           Tags
-          <input className="tags"></input>
+          <input className="tags" name="tags" />
         </label>
         <label>
           Language
-          <select>
+          <select name="languageSelect">
             <option>JavaScript</option>
             <option>Python</option>
             <option>HTML</option>
             <option>CSS</option>
+            <option>Terminal Commands</option>
           </select>
         </label>
         <label>
