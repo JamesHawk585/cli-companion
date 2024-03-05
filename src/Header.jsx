@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import SnippetForm from "./SnippetForm/SnippetForm";
 import "./App.css"
 
-const Header = () => {
+const Header = ({ onSnippetAdded }) => {
 
   const dialogRef = useRef(null);
 
@@ -13,6 +13,7 @@ const Header = () => {
 
     const onSnippetFormSubmitted = (newSnippetObject) => {
         dialogRef.current.close()
+        onSnippetAdded(newSnippetObject)
     }
 
   return (

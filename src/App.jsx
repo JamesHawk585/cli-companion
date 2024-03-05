@@ -16,7 +16,8 @@ export default () => {
   }, []) 
 
   const onSnippetAdded = (snippetObj) => {
-    return setSnippets([...snippetObj, snippets])
+    // return setSnippets([...snippetObj, snippets])
+    return setSnippets([...snippets, snippetObj])
   }
 
   return (
