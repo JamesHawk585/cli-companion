@@ -16,16 +16,15 @@ export default () => {
   }, []) 
 
   const onSnippetAdded = (snippetObj) => {
-    // return setSnippets([...snippetObj, snippets])
     return setSnippets([...snippets, snippetObj])
   }
 
   return (
     <>
-    <main className="app">
+    <div className="app">
       <Header onSnippetAdded={onSnippetAdded}/>
       <SnippetList API={API} snippets={snippets}/>
-      </main>
+      </div>
     </>
   );
 };
