@@ -25,36 +25,28 @@
       "id": 3
     },
     {
-      "title": "My new test snippet",
-      "tags": "my new test tag ",
-      "languageSelect": "HTML",
-      "code": "<h1></h1>",
-      "explanation": "Creates h1 html element",
+      "title": "Dog",
+      "tags": "Dog",
+      "languageSelect": "JavaScript",
+      "code": "Dog",
+      "explanation": "Dog",
       "id": 4
-    },
-    {
-      "title": "Dog",
-      "tags": "Dog",
-      "languageSelect": "JavaScript",
-      "code": "Dog",
-      "explanation": "Dog",
-      "id": 5
-    },
-    {
-      "title": "Dog",
-      "tags": "Dog",
-      "languageSelect": "JavaScript",
-      "code": "Dog",
-      "explanation": "Dog",
-      "id": 6
     },
     {
       "title": "Cat",
       "tags": "Cat",
       "languageSelect": "JavaScript",
       "code": "Cat",
-      "explanation": "Cat",
-      "id": 7
+      "explanation": "Cat\n",
+      "id": 5
+    },
+    {
+      "title": "Python",
+      "tags": "Python",
+      "languageSelect": "Python",
+      "code": "Python",
+      "explanation": "Python",
+      "id": 6
     }
   ]
 }

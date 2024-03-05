@@ -2,17 +2,28 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Header.jsx";
 import SnippetList from "./SnippetList/SnippetList.jsx";
+import React, { useState, useEffect } from 'react'
 
 const API = 'http://127.0.0.1:5555/snippets'
 
 export default () => {
+  const [snippets, setSnippets] = useState([]);
 
+  useEffect(() => {
+      fetch(API)
+      .then((r) => r.json())
+      .then((data) => setSnippets(data))
+  }, []) 
+
+  const onSnippetAdded = (snippetObj) => {
+    return setSnippets([...snippetObj, snippets])
+  }
 
   return (
     <>
     <main className="app">
-      <Header />
-      <SnippetList API={API}/>
+      <Header onSnippetAdded={onSnippetAdded}/>
+      <SnippetList API={API} snippets={snippets}/>
       </main>
     </>
   );

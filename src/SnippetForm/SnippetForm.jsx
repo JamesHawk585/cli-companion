@@ -23,6 +23,8 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
         .then(responseSnippetObject => onSnippetFormSubmitted(responseSnippetObject));
   };
 
+//   The response body of a post request is the newly added object as it appears in the db, with id. 
+
   return (
     <dialog ref={dialogRef}>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
@@ -41,6 +43,7 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
             <option>Python</option>
             <option>HTML</option>
             <option>CSS</option>
+            <option>Terminal Commands</option>
           </select>
         </label>
         <label>

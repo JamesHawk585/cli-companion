@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import SnippetCard from '../SnippetCard/SnippetCard'
+import React, { useState, useEffect } from "react";
+import SnippetCard from "../SnippetCard/SnippetCard";
 
-const SnippetList = ({ API }) => {
-    const [snippets, setSnippets] = useState([])
+const SnippetList = ({ API, snippets }) => {
 
-    useEffect(() => {
-        fetch(API)
-        .then((r) => r.json())
-        .then((data) => setSnippets(data))
-    }, [])
 
-    const snippetCards = snippets.map((card, index) => {
-        return <SnippetCard 
+  const snippetCards = snippets.map((snippetObj, index) => {
+    return (
+      <SnippetCard
         key={index}
-        title={card.title}
-        tags={card.tags}
-        languageSelect={card.languageSelect}
-        code={card.code}
-        />
-    });
+        title={snippetObj.title}
+        tags={snippetObj.tags}
+        languageSelect={snippetObj.languageSelect}
+        code={snippetObj.code}
+      />
+    );
+  });
 
-    // console.log(snippetCards[0].props)
+  return <>{snippetCards}</>;
+};
 
-
-    // console.log(snippetCard)
-
-  return (
-    <>
-    {snippetCards}
-    </>
-  )
-}
-
-export default SnippetList
+export default SnippetList;

@@ -12,8 +12,6 @@ const Header = () => {
     }
 
     const onSnippetFormSubmitted = (newSnippetObject) => {
-        console.log("onFormSbumitted")
-        console.log(newSnippetObject)
         dialogRef.current.close()
     }
 
