@@ -25,6 +25,12 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
         formRef.current.reset()
 };
 
+const closeModal = (e) => {
+  e.preventDefault();
+  formRef.current.reset();
+  dialogRef.current.close();
+} 
+
 //   The response body of a post request is the newly added object as it appears in the db, with id. 
 
   return (
@@ -57,6 +63,7 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
           <textarea name="explanation"></textarea>
         </label>
         <button>Save</button>
+        <button onClick={(e) => closeModal(e)}>Close</button>
       </form>
     </dialog>
   );
