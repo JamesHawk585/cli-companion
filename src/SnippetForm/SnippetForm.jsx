@@ -5,6 +5,7 @@ import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
 const API = "http://127.0.0.1:5555/snippets";
 
 const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
+  const formRef = useRef(null)
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
@@ -28,7 +29,7 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
 
   return (
     <dialog ref={dialogRef}>
-      <form className="form" onSubmit={(e) => onSubmit(e)} /*ref={formRef}*/>
+      <form className="form" onSubmit={(e) => onSubmit(e)} ref={formRef}>
         <label className="title-label">
           Title
           <input name="title" />
