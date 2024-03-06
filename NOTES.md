@@ -20,7 +20,7 @@
 
 
     ## Add Snippet:
-    1. Clear the modal form on submission. 
+    1. [x] Clear the modal form on submission. 
 
 
     ## Delete Snippet:

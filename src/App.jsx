@@ -15,6 +15,13 @@ export default () => {
       .then((data) => setSnippets(data))
   }, []) 
 
+  const onSnippetDeleted = async (snippetId) => {
+    setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));
+    const response = await fetch(`${API}/${snippetId}`, {
+      method: "DELETE",
+    });
+  };
+
   const onSnippetAdded = (snippetObj) => {
     return setSnippets([...snippets, snippetObj])
   }
@@ -24,7 +31,7 @@ export default () => {
     <div className="app">
       <Header onSnippetAdded={onSnippetAdded}/>
       <section className="snippetCardContainer">
-      <SnippetList API={API} snippets={snippets}/>
+      <SnippetList API={API} snippets={snippets} onSnippetDeleted={onSnippetDeleted}/>
       </section>
       </div>
     </>

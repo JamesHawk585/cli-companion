@@ -7,14 +7,6 @@
       "languageSelect": "JavaScript",
       "code": "Test Code1",
       "explanation": "Test Explanation1"
-    },
-    {
-      "title": "Test2",
-      "tags": "Test2",
-      "languageSelect": "JavaScript",
-      "code": "Test2",
-      "explanation": "Test2",
-      "id": 2
     }
   ]
 }
