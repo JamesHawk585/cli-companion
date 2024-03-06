@@ -7,10 +7,11 @@ const SnippetCard = ({
     languageSelect,
     code,
     onSnippetDeleted,
-    snippetId
+    snippetId, 
+    explanation
 }) => {
 
-  console.log(onSnippetDeleted)
+  console.log(explanation)
 
   const handleEditSnippet = (e) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ const SnippetCard = ({
         <h3>{tags}</h3>
         <h3>{languageSelect}</h3>
         <h3>{code}</h3>
+        <h3>{explanation}</h3>
         <button onClick={(e) => handleEditSnippet(e)}>Edit</button>
         <button onClick={(e) => handleDeleteSnippet(e)}>Delete</button>
 

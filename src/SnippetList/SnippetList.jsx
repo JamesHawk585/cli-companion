@@ -3,8 +3,8 @@ import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
 const SnippetList = ({ API, snippets, onSnippetDeleted }) => {
-  console.log(typeof(onSnippetDeleted))
   const snippetCards = snippets.map((snippetObj, index) => {
+    console.log(snippetObj)
     return (
         <SnippetCard
           key={index}
@@ -14,11 +14,11 @@ const SnippetList = ({ API, snippets, onSnippetDeleted }) => {
           languageSelect={snippetObj.languageSelect}
           code={snippetObj.code}
           onSnippetDeleted={onSnippetDeleted}
+          explanation={snippetObj.explanation}
         />
     );
   });
 
-  console.log(onSnippetDeleted)
 
   return <>{snippetCards}</>;
 };
