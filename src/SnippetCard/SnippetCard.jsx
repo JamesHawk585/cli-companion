@@ -11,17 +11,13 @@ const SnippetCard = ({
     explanation
 }) => {
 
-  console.log(explanation)
 
   const handleEditSnippet = (e) => {
     e.preventDefault();
-    console.log(e);
   }
 
   const handleDeleteSnippet = (e) => {
     e.preventDefault();
-    console.log(e);
-    console.log(typeof(onSnippetDeleted))
     onSnippetDeleted(snippetId);
   }
 

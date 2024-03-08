@@ -4,7 +4,6 @@ import "./SnippetList.css"
 
 const SnippetList = ({ API, snippets, onSnippetDeleted }) => {
   const snippetCards = snippets.map((snippetObj, index) => {
-    console.log(snippetObj)
     return (
         <SnippetCard
           key={index}

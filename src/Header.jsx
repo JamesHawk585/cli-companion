@@ -7,7 +7,6 @@ const Header = ({ onSnippetAdded }) => {
   const dialogRef = useRef(null);
 
     const onAddButtonClick = () => {
-        console.log("I work!")
         dialogRef.current.showModal();
     }
 
