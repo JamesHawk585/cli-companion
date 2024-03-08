@@ -16,9 +16,11 @@ const SnippetCard = ({
     e.preventDefault();
   }
 
-  const handleDeleteSnippet = (e) => {
+  console.log(title)
+  const handleDeleteSnippet = (e, title) => {
+    console.log(title)
     e.preventDefault();
-    onSnippetDeleted(snippetId);
+    onSnippetDeleted(snippetId, title);
   }
 
     // Not getting language select 
@@ -32,7 +34,7 @@ const SnippetCard = ({
         <h3>{code}</h3>
         <h3>{explanation}</h3>
         <button onClick={(e) => handleEditSnippet(e)}>Edit</button>
-        <button onClick={(e) => handleDeleteSnippet(e)}>Delete</button>
+        <button onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
 
     </div>
   )

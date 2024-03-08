@@ -15,11 +15,14 @@ export default () => {
       .then((data) => setSnippets(data))
   }, []) 
 
-  const onSnippetDeleted = async (snippetId) => {
-    setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));
-    const response = await fetch(`${API}/${snippetId}`, {
-      method: "DELETE",
-    });
+
+  const onSnippetDeleted = async (snippetId, title) => {
+    if (window.confirm(`Delete Snippet: "${title}"?`)) {
+      setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));
+      const response = await fetch(`${API}/${snippetId}`, {
+        method: "DELETE"
+      });
+    };
   };
 
   const onSnippetAdded = (snippetObj) => {
