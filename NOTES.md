@@ -28,15 +28,23 @@
     3. [x] handleDeleteSnippet should:
         - [x] Delete the snippet from the db. 
         - [x] Remove the snippet from the 'snippets' stateful array. 
+        - [x] Prompt the user with window.confirm before deletion. 
         
 
-    ## Edit Snippet
-    1. [] Add an onClick event to the edit button of the SnippetCard to trigger a modal form similar to that in SnippetFrom.jsx 
-    1. [] Attach event listener to the "Submit Changes" button on the modal. 
-    2. [] onSubmit calls an anonymous function that in turn calls handleEditSnippet in App.jsx or SnippetList.jsx?. 
-    3. [] handleEditSubmit should:   
-        - send a PATCH request update the specified backend resource. 
-        - Update the stateful array such that only the patched object is changed. 
+
+    ## EditSnippetForm modal 
+    1. [] Create editSnippetForm.jsx
+    2. [] Import useRef
+    3. [] declared const refName = useRef(null) 
+    4. [] Pass the refName to child compoennt
+    5. [] Use <dialog ref={refName}> on form elementjsx in child component.
+    6. [] Submit form. onSubmit() triggers onSnippetFormPatched() in EditSnippetForm.jsx 
+        - PATCH request updated backend resource. 
+        - Updates stateful array of objects to replace the snippetObj if snippetId == snippet.id. 
+    7. Create a close button for the editSnippet modal form. 
+    8. Ensure onSnippetFormPatched resets the form upon submission. 
+
+
 
 # Server 
 

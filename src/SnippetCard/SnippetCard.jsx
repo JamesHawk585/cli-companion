@@ -16,15 +16,11 @@ const SnippetCard = ({
     e.preventDefault();
   }
 
-  console.log(title)
   const handleDeleteSnippet = (e, title) => {
-    console.log(title)
     e.preventDefault();
     onSnippetDeleted(snippetId, title);
   }
 
-    // Not getting language select 
-    // Delete button should prompot the user "Are you sure?"
 
   return (
     <div className='snippetCard'>

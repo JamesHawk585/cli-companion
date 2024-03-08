@@ -9,11 +9,11 @@
       "id": 2
     },
     {
-      "title": "Delete Object from Stateful Array ",
-      "tags": "Delete",
+      "title": "Start NMP Server",
+      "tags": "npm",
       "languageSelect": "JavaScript",
-      "code": "setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));",
-      "explanation": "calls the filter method on the snippets state-ful array of objects, compares each object with the specified snippetId, and creates a new array with each object whose id does not match snippetId. It then passes the new array into the setSnippets state method. Since it omits the curly braces, calling setSnippets is intended to take up only one line. ",
+      "code": "npm start",
+      "explanation": "\nnpm start is a command used in Node.js projects that typically initiates the execution of a predefined script named \"start\" specified in the \"scripts\" section of the project's package.json file.\n\nWhen you run npm start in the terminal within a Node.js project directory, npm looks for a script named \"start\" in the scripts section of the package.json file. It then executes the command associated with the \"start\" script.",
       "id": 3
     }
   ]
