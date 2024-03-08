@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './SnippetCard.css'
+import EditSnippetForm from '../EditSnippetForm/EditSnippetForm';
 
 const SnippetCard = ({  
     title,
@@ -11,9 +12,13 @@ const SnippetCard = ({
     explanation
 }) => {
 
+  const editRef = useRef(null)
 
+  
+  
   const handleEditSnippet = (e) => {
     e.preventDefault();
+    editRef.current.showModal();
   }
 
   const handleDeleteSnippet = (e, title) => {
@@ -23,6 +28,7 @@ const SnippetCard = ({
 
 
   return (
+  <>
     <div className='snippetCard'>
         <h1>{title}</h1>
         <h3>{tags}</h3>
@@ -31,8 +37,9 @@ const SnippetCard = ({
         <h3>{explanation}</h3>
         <button onClick={(e) => handleEditSnippet(e)}>Edit</button>
         <button onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
-
     </div>
+    <EditSnippetForm editRef={editRef}/>
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "./SnippetForm.css";
-import "/home/jph94880/development/code/projects/cli-companion/src/App.css";
+
 
 const API = "http://127.0.0.1:5555/snippets";
 

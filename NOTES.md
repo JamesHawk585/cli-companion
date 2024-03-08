@@ -36,17 +36,22 @@
 
 
     ## EditSnippetForm modal 
-    1. [] Create EditSnippetForm.jsx in EditSnippetForm directory. 
-    2. [] Import useRef in SnippetCard.jsx
-    3. [] declared const refName = useRef(null) in SnippetCard.jsx  
-    4. [] Pass the refName from SnippetCard.jsx to EditSnippetForm.jsx
-    5. [] Use <dialog ref={refName}> on <form></form> element jsx in EditSnippetForm.jsx
+    1. [x] Create EditSnippetForm.jsx in EditSnippetForm directory. 
+    2. [x] Import useRef in SnippetCard.jsx
+    3. [x] declared const refName = useRef(null) in SnippetCard.jsx  
+    4. [x] Pass the refName from SnippetCard.jsx to EditSnippetForm.jsx
+    5. [x] Use <dialog ref={refName}> on <form></form> element jsx in EditSnippetForm.jsx
+      Add a callback function to be called when the edit button is clicked. This function will display the modal: 
+      const onEditButtonClick = () => {
+        editRef.current.showModal();
+    }
     6. [] Submit form. onSubmit() triggers onSnippetFormPatched() in EditSnippetForm.jsx 
         - Should onSnippetFormPatched() be in App.jsx, since it will have to update the snippets stateful array? 
         - PATCH request updated backend resource. 
         - Updates stateful array of objects to replace the snippetObj if snippetId == snippet.id. 
     7. Create a close button for the editSnippet modal form. 
     8. Ensure onSnippetFormPatched resets the form upon submission. 
+
 
 
 
