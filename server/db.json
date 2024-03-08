@@ -7,14 +7,6 @@
       "code": "json-server --watch db.json -p 5555",
       "explanation": "Starts json server on the specified port, 5555 in this case. ",
       "id": 2
-    },
-    {
-      "title": "Start NMP Server",
-      "tags": "npm",
-      "languageSelect": "JavaScript",
-      "code": "npm start",
-      "explanation": "\nnpm start is a command used in Node.js projects that typically initiates the execution of a predefined script named \"start\" specified in the \"scripts\" section of the project's package.json file.\n\nWhen you run npm start in the terminal within a Node.js project directory, npm looks for a script named \"start\" in the scripts section of the package.json file. It then executes the command associated with the \"start\" script.",
-      "id": 3
     }
   ]
 }
