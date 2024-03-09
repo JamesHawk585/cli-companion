@@ -1,11 +1,27 @@
 import React, { useRef } from 'react'
 
-const EditSnippetForm = ({ editRef }) => {
+function EditSnippetForm({ editRef, onSnippetFormEdited, snippetId }) {
     const formRef = useRef(null)
 
-const onSubmitEditForm = () => {
-    console.log("onSubmitEdit")
-}
+    console.log(snippetId)
+    const API = 'http://127.0.0.1:5555/snippets'
+
+const onSubmitEditForm = (e) => {
+  console.log(snippetId)
+  e.preventDefault()
+  const formData = Object.fromEntries(new FormData(e.target));
+  fetch(`${API}/${snippetId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(r => r.json())
+    .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject))
+    formRef.current.reset()
+};
 
   return (
     <dialog ref={editRef}>

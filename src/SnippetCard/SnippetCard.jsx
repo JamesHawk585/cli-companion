@@ -12,6 +12,8 @@ const SnippetCard = ({
     explanation
 }) => {
 
+  console.log(snippetId)
+
   const editRef = useRef(null)
 
   
@@ -26,6 +28,10 @@ const SnippetCard = ({
     onSnippetDeleted(snippetId, title);
   }
 
+  const onSnippetFormEdited = (responseSnippetObject) => {
+    console.log(responseSnippetObject)
+  }
+
 
   return (
   <>
@@ -38,7 +44,7 @@ const SnippetCard = ({
         <button onClick={(e) => handleEditSnippet(e)}>Edit</button>
         <button onClick={(e) => handleDeleteSnippet(e, title)}>Delete</button>
     </div>
-    <EditSnippetForm editRef={editRef}/>
+    <EditSnippetForm editRef={editRef} onSnippetFormEdited={onSnippetFormEdited} snippetId={snippetId}/>
     </>
   )
 }

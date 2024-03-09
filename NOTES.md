@@ -45,7 +45,17 @@
       const onEditButtonClick = () => {
         editRef.current.showModal();
     }
-    6. [] Submit form. onSubmit() triggers onSnippetFormPatched() in EditSnippetForm.jsx 
+
+    __________________________________________________________________________________________________
+    
+    
+    6. [] Submit form. onSubmit={} triggers onSubmitEditForm()
+    7. [] OnSubmitEditForm handles the PATCH request
+    8. [] onSubmitEditForm passes the patched object up to onSnippetFormEdited() in Header.jsx.
+    9. [] onSubmitFOrmEdited() closes the modal and passes the patched object up to App.jsx.  
+    
+    
+    onSnippetFormPatched() in EditSnippetForm.jsx 
         - Should onSnippetFormPatched() be in App.jsx, since it will have to update the snippets stateful array? 
         - PATCH request updated backend resource. 
         - Updates stateful array of objects to replace the snippetObj if snippetId == snippet.id. 

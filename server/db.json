@@ -1,12 +1,20 @@
 {
   "snippets": [
     {
-      "title": "Start JSON Server",
-      "tags": "json-server",
-      "languageSelect": "Terminal Commands",
-      "code": "json-server --watch db.json -p 5555",
-      "explanation": "Starts json server on the specified port, 5555 in this case. ",
+      "title": "Let's see if our PATCH request works.",
+      "tags": "my new test tag ",
+      "languageSelect": "HTML",
+      "code": "<h1></h1>",
+      "explanation": "Creates h1 html element",
       "id": 2
+    },
+    {
+      "title": "",
+      "tags": "",
+      "languageSelect": "JavaScript",
+      "code": "",
+      "explanation": "",
+      "id": 3
     }
   ]
 }
