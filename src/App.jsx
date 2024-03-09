@@ -29,12 +29,16 @@ export default () => {
     return setSnippets([...snippets, snippetObj])
   }
 
+  const onSnippetEdited = () => {
+    console.log("onSnippetEdited()")
+  }
+
   return (
     <>
     <div className="app">
       <Header onSnippetAdded={onSnippetAdded}/>
       <section className="snippetCardContainer">
-      <SnippetList API={API} snippets={snippets} onSnippetDeleted={onSnippetDeleted}/>
+      <SnippetList API={API} snippets={snippets} onSnippetEdited={onSnippetEdited} onSnippetDeleted={onSnippetDeleted}/>
       </section>
       </div>
     </>

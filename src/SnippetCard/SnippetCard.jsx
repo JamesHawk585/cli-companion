@@ -9,7 +9,8 @@ const SnippetCard = ({
     code,
     onSnippetDeleted,
     snippetId, 
-    explanation
+    explanation,
+    passPatchResponseObjectFromChildToParent
 }) => {
 
   console.log(snippetId)
@@ -28,8 +29,11 @@ const SnippetCard = ({
     onSnippetDeleted(snippetId, title);
   }
 
-  const onSnippetFormEdited = (responseSnippetObject) => {
+  const onSnippetFormEdited = (responseSnippetObject, e) => {
+    e.preventDefault()
     console.log(responseSnippetObject)
+    editRef.current.close()
+    passPatchResponseObjectFromChildToParent(responseSnippetObject);
   }
 
 

@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import SnippetCard from "../SnippetCard/SnippetCard";
 import "./SnippetList.css"
 
-const SnippetList = ({ API, snippets, onSnippetDeleted }) => {
+const SnippetList = ({ API, snippets, onSnippetDeleted, onSnippetEdited }) => {
+
+
+  const passPatchResponseObjectFromChildToParent = (responseSnippetObject) => {
+    onSnippetEdited(responseSnippetObject)
+  }
+
+
   const snippetCards = snippets.map((snippetObj, index) => {
     return (
         <SnippetCard
@@ -14,9 +21,11 @@ const SnippetList = ({ API, snippets, onSnippetDeleted }) => {
           code={snippetObj.code}
           onSnippetDeleted={onSnippetDeleted}
           explanation={snippetObj.explanation}
+          passPatchResponseObjectFromChildToParent={passPatchResponseObjectFromChildToParent}
         />
     );
   });
+
 
 
   return <>{snippetCards}</>;

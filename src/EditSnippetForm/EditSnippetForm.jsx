@@ -19,9 +19,14 @@ const onSubmitEditForm = (e) => {
       body: JSON.stringify(formData)
     })
     .then(r => r.json())
-    .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject))
+    .then(responseSnippetObject => onSnippetFormEdited(responseSnippetObject, e))
     formRef.current.reset()
 };
+
+const closeEditModal = (e) => {
+  e.preventDefault()
+  editRef.current.close()
+}
 
   return (
     <dialog ref={editRef}>
@@ -53,7 +58,7 @@ const onSubmitEditForm = (e) => {
           <textarea name="explanation"></textarea>
         </label>
         <button>Save</button>
-        <button>Close</button>
+        <button onClick={(e) => closeEditModal(e)}>Close</button>
       </form>
     </dialog>
   )
