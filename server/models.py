@@ -20,9 +20,9 @@ class User(db.Model):
     __tablename__ = 'user'
     user_id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.string)
-    last_name = db.Column(db.string)
-    username = db.Column(db.string, unique=True)
+    first_name = db.Column(db.string(100), nullable=False)
+    last_name = db.Column(db.string(100), nullable=False)
+    username = db.Column(db.string, unique=True(100), nullable=False)
     _password_hash = db.Column(db.string)
 
     snippets = db.relationship("Snippet", backref='user')
@@ -47,11 +47,11 @@ class Snippet(db.Model, SerializerMixin):
     __tablename__ = "snipets"
 
     snippet_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, unique=True)
+    title = db.Column(db.String(50), unique=True)
     tags = db.Column(db.String)
     langauge_select = db.Column(db.String)
     code = db.Column(db.String)
-    explanation = db.Column(db.String)
+    explanation = db.Column(db.String(1000))
 
     user_id = db.Column(db.Integer(), db.ForeignKey('user.user_id'))
 
