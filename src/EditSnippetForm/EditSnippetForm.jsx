@@ -3,11 +3,9 @@ import React, { useRef } from 'react'
 function EditSnippetForm({ editRef, onSnippetFormEdited, snippetId }) {
     const formRef = useRef(null)
 
-    console.log(snippetId)
     const API = 'http://127.0.0.1:5555/snippets'
 
 const onSubmitEditForm = (e) => {
-  console.log(snippetId)
   e.preventDefault()
   const formData = Object.fromEntries(new FormData(e.target));
   fetch(`${API}/${snippetId}`,

@@ -13,12 +13,9 @@ const SnippetCard = ({
     passPatchResponseObjectFromChildToParent
 }) => {
 
-  console.log(snippetId)
 
   const editRef = useRef(null)
 
-  
-  
   const handleEditSnippet = (e) => {
     e.preventDefault();
     editRef.current.showModal();
@@ -31,7 +28,6 @@ const SnippetCard = ({
 
   const onSnippetFormEdited = (responseSnippetObject, e) => {
     e.preventDefault()
-    console.log(responseSnippetObject)
     editRef.current.close()
     passPatchResponseObjectFromChildToParent(responseSnippetObject);
   }

@@ -4,13 +4,20 @@ from sqlalchemy_serializer import SerializerMixin
 from config import db, bcrypt
 
 
-
+snippets_tags_join_table = db.Table('snippet_to_tag',
+                                    db.Column("snippet_id", db.Integer, db.ForeignKey("snippet.snippet_id")),
+                                    db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"))
+                                    )
 # 1. [] db relationships 
+    # - [x] Ref: "snippets"."tags" <> "tags"."tag"
+    # - [] Ref: "users"."user_id" < "snippets"."snippet_id"
+
 # 2. [] Add contraints
 # 3. [] Add valdiations 
 # 4. [x] IAM for user model 
 
-class user(db.Model):
+class User(db.Model):
+    __tablename__ = 'user'
     user_id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.string)
@@ -34,10 +41,10 @@ class user(db.Model):
         return f"User {self.username}, ID: {self.id}"
 
 
-class snippet(db.Model, SerializerMixin):
+class Snippet(db.Model, SerializerMixin):
     __tablename__ = "snipets"
 
-    id = db.Column(db.Integer, primary_key=True)
+    snippet_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, unique=True)
     tags = db.Column(db.String)
     langauge_select = db.Column(db.String)
@@ -45,9 +52,9 @@ class snippet(db.Model, SerializerMixin):
     explanation = db.Column(db.String)
 
 
-class tag(db.Model, SerializerMixin):
+class Tag(db.Model, SerializerMixin):
     __tablename__ = "tags"
 
-    id = db.Column(db.Integer, primary_key=True)
+    tag_id = db.Column(db.Integer, primary_key=True)
     tag = db.Column(db.String)
 
