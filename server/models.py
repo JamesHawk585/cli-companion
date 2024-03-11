@@ -9,28 +9,21 @@ snippets_tags_join_table = db.Table('snippet_to_tag',
                                     db.Column("snippet_id", db.Integer, db.ForeignKey("snippet.snippet_id")),
                                     db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"))
                                     )
-# 1. [x] db relationships 
-    # - [x] Ref: "snippets"."tags" <> "tags"."tag"
-    # - [x] Ref: "users"."user_id" < "snippets"."snippet_id"
-
-# 2. [x] Add contraints
-# 3. [] Add valdiations 
-# 4. [x] IAM for user model 
 
 class User(db.Model):
     __tablename__ = 'user'
     user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.string, unique=True(100), nullable=False)
     email = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.string(100), nullable=False)
     last_name = db.Column(db.string(100), nullable=False)
-    username = db.Column(db.string, unique=True(100), nullable=False)
     _password_hash = db.Column(db.string)
 
     snippets = db.relationship("Snippet", backref='user')
 
     @validates('username')
     def validate_username(self, key, username):
-        username_exists = db.sessionquery(User).filter(User.username == username).first()
+        username_exists = db.session.query(User).filter(User.username == username).first()
         if not username:
             raise ValueError("username field is required")
         if username_exists:
@@ -39,6 +32,41 @@ class User(db.Model):
             if len(username) >= 100:
                 raise ValueError("username must be 100 characters or less")
         return username
+    
+    @validates('email')
+    def validate_username(self, key, email):
+        email_exists = db.session.query(User).filter(User.email == email).first()
+        if not email:
+            raise ValueError("email field is required")
+        if email_exists:
+            raise ValueError("email must be unique")
+        if "@" not in email: 
+            raise ValueError("failed simplified email validation")
+        elif key == 'email':
+            if len(email) >= 100:
+                raise ValueError("email must be 100 characters or less")
+        return email
+    
+    # from wtforms.validators import InputRequired, Email
+    # Validate email here. https://wtforms.readthedocs.io/en/2.3.x/validators/ 
+    
+    @validates('first_name')
+    def validate_username(self, key, first_name):
+        if not first_name:
+            raise ValueError("first_name field is required")
+        elif key == 'first_name':
+            if len(first_name) >= 100:
+                raise ValueError("first_name must be 100 characters or less")
+        return first_name
+    
+    @validates('last_name')
+    def validate_username(self, key, last_name):
+        if not last_name:
+            raise ValueError("last_name field is required")
+        elif key == 'last_name':
+            if len(last_name) >= 100:
+                raise ValueError("last_name must be 100 characters or less")
+        return last_name
 
     @hybrid_property # Restrict access to the password hash.
     def password_hash(self):
@@ -55,20 +83,48 @@ class User(db.Model):
     def __repr__(self):
         return f"User {self.username}, ID: {self.id}"
 
-
 class Snippet(db.Model, SerializerMixin):
     __tablename__ = "snipets"
 
     snippet_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=True)
+    title = db.Column(db.String(50), unique=True, nullable=False)
     tags = db.Column(db.String)
     langauge_select = db.Column(db.String)
-    code = db.Column(db.String)
+    code = db.Column(db.String(500), nullable=False)
     explanation = db.Column(db.String(1000))
 
     user_id = db.Column(db.Integer(), db.ForeignKey('user.user_id'))
 
-
+    @validates('title')
+    def validate_title(self, key, title):
+        title_exists = db.session.query(Snippet).filter(Snippet.title == title).first()
+        if not title:
+            raise ValueError("title field is required")
+        if title_exists:
+            raise ValueError("title must be unique")
+        elif key == 'title':
+            if len(title) >= 50:
+                raise ValueError("title must be 50 characters or less")
+        return title 
+    
+    @validates("code")
+    def validate_code(self, key, code):
+        if not code:
+            raise ValueError("code field is required")
+        elif key == 'title':
+            if len(code) >= 500:
+                raise ValueError("code must be 500 characters or less")
+        return code 
+    
+    @validates("explanation")
+    def validate_explanation(self, key, explanation):
+        if not explanation: 
+            raise ValueError("explanation field is required")
+        elif key == 'explanation':
+            if len(explanation) >= 1000:
+                raise ValueError("explanation must be 1000 characters or less")
+        return explanation 
+        
 class Tag(db.Model, SerializerMixin):
     __tablename__ = "tags"
 
