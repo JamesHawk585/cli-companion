@@ -8,9 +8,9 @@ snippets_tags_join_table = db.Table('snippet_to_tag',
                                     db.Column("snippet_id", db.Integer, db.ForeignKey("snippet.snippet_id")),
                                     db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"))
                                     )
-# 1. [] db relationships 
+# 1. [x] db relationships 
     # - [x] Ref: "snippets"."tags" <> "tags"."tag"
-    # - [] Ref: "users"."user_id" < "snippets"."snippet_id"
+    # - [x] Ref: "users"."user_id" < "snippets"."snippet_id"
 
 # 2. [] Add contraints
 # 3. [] Add valdiations 
@@ -24,6 +24,8 @@ class User(db.Model):
     last_name = db.Column(db.string)
     username = db.Column(db.string, unique=True)
     _password_hash = db.Column(db.string)
+
+    snippets = db.relationship("Snippet", backref='user')
 
     @hybrid_property # Restrict access to the password hash.
     def password_hash(self):
@@ -50,6 +52,8 @@ class Snippet(db.Model, SerializerMixin):
     langauge_select = db.Column(db.String)
     code = db.Column(db.String)
     explanation = db.Column(db.String)
+
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.user_id'))
 
 
 class Tag(db.Model, SerializerMixin):
