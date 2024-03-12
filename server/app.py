@@ -83,6 +83,83 @@ class TagSchema(ma.SQLAlchemySchema):
         }
     )
 
+@app.route('/')
+def index():
+    return '<h1>CLI-Companion</h1>'
+
+
+@app.route('/users/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
+def user_by_id(id):
+        user = User.query.filter_by(id=id).first()
+        if request.method == 'GET':
+
+    
+            response = make_response(
+                user_schema.dump(user),
+                200
+            )
+            return response 
+    
+        elif request.method == 'PATCH':
+            for attr in request.get_json():
+                # ipdb.set_trace()
+                setattr(user, attr, request.get_json()[attr])
+
+                db.session.add(user)
+                db.session.commit()
+        
+                return make_response(
+                    user_schema.dump(user),
+                    200
+                )
+
+
+        elif request.method == 'DELETE':
+            user = User.query.filter_by(id=id).first()
+            db.session.delete(user)
+            db.session.commit()
+
+            return make_response(
+                user_schema.dump(user),
+                200
+            )
+
+
+@app.route('/users', methods =['GET', 'POST'] )
+def users():
+    # ipdb.set_trace()
+    if request.method == 'GET':
+
+        users = User.query.all()
+
+        response = make_response(
+            users_schema.dump(users),
+            200
+        )
+        return response 
+    
+    elif request.method == 'POST':
+        json_dict = request.get_json()
+
+        user = User(
+            
+            username = json_dict['username'],
+            email = json_dict['email'],
+            first_name = json_dict['first_name'],
+            last_name = json_dict['last_name']
+        )
+
+        db.session.add(user)
+        db.session.commit()
+
+        response = make_response(
+            user_schema.dump(user),
+            201
+        )
+
+
+        return response
+
 
 # Routes here 
 
