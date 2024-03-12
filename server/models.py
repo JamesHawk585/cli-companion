@@ -1,18 +1,18 @@
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates, relationship
 
 from config import db, bcrypt
 
 
 snippets_tags_join_table = db.Table('snippet_to_tag',
-                                    db.Column("snippet_id", db.Integer, db.ForeignKey("snippet.snippet_id")),
-                                    db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"))
+                                    db.Column("snippet_id", db.Integer, db.ForeignKey("snippet.id")),
+                                    db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
                                     )
 
 class User(db.Model):
     __tablename__ = 'user'
-    user_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
@@ -83,17 +83,22 @@ class User(db.Model):
     def __repr__(self):
         return f"User {self.username}, ID: {self.id}"
 
-class Snippet(db.Model, SerializerMixin):
-    __tablename__ = "snipets"
+class Snippet(db.Model):
+    __tablename__ = "snippet"
 
-    snippet_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(50), unique=True, nullable=False)
-    tags = db.Column(db.String)
-    langauge_select = db.Column(db.String)
+    # tags = db.Column(db.String)
+    language_select = db.Column(db.String)
     code = db.Column(db.String(500), nullable=False)
     explanation = db.Column(db.String(1000))
 
-    user_id = db.Column(db.Integer(), db.ForeignKey('user.user_id'))
+    tags = db.relationship('Tag', backref="snippet")
+    user = db.relationship('User', backref="snippet")
+    # user_id = db.Column(db.Integer(), db.ForeignKey('user.user_id'))
+    # user = relationship("user", back_populates="snippets")
+
 
     @validates('title')
     def validate_title(self, key, title):
@@ -125,9 +130,11 @@ class Snippet(db.Model, SerializerMixin):
                 raise ValueError("explanation must be 1000 characters or less")
         return explanation 
         
-class Tag(db.Model, SerializerMixin):
-    __tablename__ = "tags"
+class Tag(db.Model):
+    __tablename__ = "tag"
 
     tag_id = db.Column(db.Integer, primary_key=True)
     tag = db.Column(db.String)
+    snippets = db.relationship('Snippet', backref='tag')
+
 
