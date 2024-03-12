@@ -4,7 +4,6 @@ from config import db, app, bcrypt
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from faker import Faker
-import requests
 import json
 
 
@@ -48,6 +47,6 @@ with app.app_context():
             # We are calling the password_hash setter method here
 
 
-            db.session.add_all(users)
-            db.session.commit()
+    db.session.add_all(users)
+    db.session.commit()
 

@@ -28,6 +28,7 @@ class UserSchema(ma.SQLAlchemySchema):
     email = ma.auto_field()
     first_name = ma.auto_field()
     last_name = ma.auto_field()
+    _password_hash = ma.auto_field(load_only=True)
 
     url = ma.Hyperlinks(
         {
@@ -48,7 +49,7 @@ class SnippetSchema(ma.SQLAlchemySchema):
         model = Snippet
 
     title = ma.auto_field()
-    tags = ma.auto_field()
+    # tags = ma.auto_field()
     language_select = ma.auto_field()
     code = ma.auto_field()
     explanation = ma.auto_field()
