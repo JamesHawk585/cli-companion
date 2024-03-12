@@ -12,12 +12,12 @@ snippets_tags_join_table = db.Table('snippet_to_tag',
 
 class User(db.Model):
     __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
-    email = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String, primary_key=True)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
-    _password_hash = db.Column(db.String)
+    # _password_hash = db.Column(db.String)
 
     snippets = db.relationship("Snippet", backref='user')
 
@@ -81,7 +81,7 @@ class User(db.Model):
         return bcrypt.check_password_hash(self._password_hash, password)
 
     def __repr__(self):
-        return f"User {self.username}, ID: {self.id}"
+        return f"User {self.username}"
 
 class Snippet(db.Model):
     __tablename__ = "snippet"
@@ -95,7 +95,7 @@ class Snippet(db.Model):
     # Associates snippet with user in one to many relationship 
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
-    # Asscoaites tag 
+    # Assocaites tag 
     tag = db.relationship('Tag', secondary=snippets_tags_join_table, backref="snippet")
 
 
@@ -116,7 +116,7 @@ class Snippet(db.Model):
     def validate_code(self, key, code):
         if not code:
             raise ValueError("code field is required")
-        elif key == 'title':
+        elif key == 'code':
             if len(code) >= 500:
                 raise ValueError("code must be 500 characters or less")
         return code 

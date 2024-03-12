@@ -28,7 +28,7 @@ class UserSchema(ma.SQLAlchemySchema):
     email = ma.auto_field()
     first_name = ma.auto_field()
     last_name = ma.auto_field()
-    _password_hash = ma.auto_field(load_only=True)
+    # _password_hash = ma.auto_field(load_only=True)
 
     url = ma.Hyperlinks(
         {
@@ -36,7 +36,6 @@ class UserSchema(ma.SQLAlchemySchema):
             "collection": ma.URLFor("users"),
         }
     )
-
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
@@ -56,8 +55,8 @@ class SnippetSchema(ma.SQLAlchemySchema):
 
     url = ma.Hyperlinks(
         {
-            "self": ma.URLFor("user_by_id", values=dict(id="<id>")),
-            "collection": ma.URLFor("users"),
+            "self": ma.URLFor("snippet_by_id", values=dict(id="<id>")),
+            "collection": ma.URLFor("snippets"),
         }
     )
 
@@ -76,8 +75,8 @@ class TagSchema(ma.SQLAlchemySchema):
 
     url = ma.Hyperlinks(
         {
-            "self": ma.URLFor("user_by_id", values=dict(id="<id>")),
-            "collection": ma.URLFor("users"),
+            "self": ma.URLFor("tag_by_id", values=dict(id="<id>")),
+            "collection": ma.URLFor("tags"),
         }
     )
 
