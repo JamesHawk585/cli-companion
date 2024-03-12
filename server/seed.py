@@ -1,6 +1,11 @@
 from models import User, Snippet, Tag
+from flask import Flask
 from config import db, app, bcrypt
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 from faker import Faker
+import requests
+import json
 
 
 fake = Faker()

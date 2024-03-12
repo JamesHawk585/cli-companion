@@ -13,11 +13,11 @@ snippets_tags_join_table = db.Table('snippet_to_tag',
 class User(db.Model):
     __tablename__ = 'user'
     user_id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.string, unique=True(100), nullable=False)
+    username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.string(100), nullable=False)
-    last_name = db.Column(db.string(100), nullable=False)
-    _password_hash = db.Column(db.string)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False)
+    _password_hash = db.Column(db.String)
 
     snippets = db.relationship("Snippet", backref='user')
 
