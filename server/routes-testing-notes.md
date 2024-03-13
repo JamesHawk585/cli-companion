@@ -10,20 +10,21 @@
 1. http://127.0.0.1:5000/users/id
     - [x] GET
     - [] PATCH
-    - [] DELETE
+        - PATCH is returning the unaltered onject that it is supposed to patch. 
+    - [x] DELETE
 
 ## Snippets
 
 1. http://127.0.0.1:5000/snippets
     - [x] GET
-    - [] POST
+    - [x] POST
 
 
 Can't test snippets/id until snippets table is seeded. 
 1. http://127.0.0.1:5000/snippets/id
-    - [] GET
-    - [] PATCH
-    - [] DELETE
+    - [x] GET
+    - [x] PATCH
+    - [x] DELETE
 
 ## Tags 
 
