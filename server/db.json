@@ -9,7 +9,7 @@
       "id": 2
     },
     {
-      "title": "Delete Object from Stateful Array ",
+      "title": "Delete Object from Stateful Array",
       "tags": "Delete",
       "languageSelect": "JavaScript",
       "code": "setSnippets(snippets.filter((snippet) => snippet.id !== snippetId));",

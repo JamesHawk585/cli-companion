@@ -9,6 +9,7 @@ const SnippetForm = ({ dialogRef, onSnippetFormSubmitted }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
+    console.log(formData)
     fetch(
       API,
       {
@@ -45,7 +46,7 @@ const closeModal = (e) => {
         </label>
         <label>
           Language
-          <select name="languageSelect">
+          <select name="language_select">
             <option>JavaScript</option>
             <option>Python</option>
             <option>HTML</option>
